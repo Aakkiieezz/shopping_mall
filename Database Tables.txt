@@ -1,0 +1,26 @@
+CREATE TABLE `Products` (
+  `prod_ID` int NOT NULL AUTO_INCREMENT,
+  `prod_Name` varchar(30) NOT NULL,
+  `prod_Unit` varchar(10) NOT NULL,
+  `prod_PricePerUnit` double NOT NULL,
+  PRIMARY KEY (`prod_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `Orders` (
+  `order_ID` int NOT NULL AUTO_INCREMENT,
+  `order_CustomerName` varchar(45) NOT NULL,
+  `order_TotalPrice` double NOT NULL,
+  `order_DateTime` date NOT NULL,
+  PRIMARY KEY (`order_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `OrderDetails` (
+  `OrderID` int NOT NULL,
+  `ProductID` int NOT NULL,
+  `Quantity` int NOT NULL,
+  `TotalPrice` double NOT NULL,
+  PRIMARY KEY (`OrderID`,`ProductID`),
+  KEY `fk_OrderDetails_ProductID_idx` (`ProductID`),
+  CONSTRAINT `fk_OrderDetails_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`order_ID`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `fk_OrderDetails_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `Products` (`prod_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
