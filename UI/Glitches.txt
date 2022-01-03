@@ -1,3 +1,0 @@
-When a latest product added, and made an order using only that
-the order does not go into the database, only shows up in the list of orders
-Guess - maybe after the product addition, the connection with the database is not refreshed before placing any order
