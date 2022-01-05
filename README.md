@@ -14,7 +14,7 @@ Edit Product (info autopopulating of that product before edit)
 Delete Product
 ![Screenshot_20220105_181634](https://user-images.githubusercontent.com/67866166/148220145-b8f434cd-8d9a-48e2-9049-5f8bcee7260b.png)
 
-Add an Order
+Add an Order (Column Price autopopulating based on product id) (Column Total autopopulating based on price * quantity)
 ![Screenshot_20220105_182257](https://user-images.githubusercontent.com/67866166/148220961-cfb6fcac-d012-4949-b823-70fcf5b4facd.png)
 
 All Orders
