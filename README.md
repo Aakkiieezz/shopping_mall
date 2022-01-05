@@ -8,7 +8,7 @@ Add Product
 All Products
 ![Screenshot_20220105_181500](https://user-images.githubusercontent.com/67866166/148220104-bf5b0bfa-1480-4516-9204-fc40070556a0.png)
 
-Edit Product
+Edit Product (info autopopulating of that product before edit)
 ![Screenshot_20220105_181531](https://user-images.githubusercontent.com/67866166/148220134-3790f18f-472c-4049-9726-86eb44548a34.png)
 
 Delete Product
