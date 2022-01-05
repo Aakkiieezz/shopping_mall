@@ -1,6 +1,7 @@
 # Python-CRUD-Operations
 Simple CRUD Operations using Python3, Flask, MySQL (old repository)->(new = Flask-CRUD-Operations)
 
+## Screenshots of demo
 Add Product
 ![Screenshot_20220105_181322](https://user-images.githubusercontent.com/67866166/148220045-95995fff-9c48-4508-8131-4b22dbbf46f9.png)
 
@@ -19,7 +20,7 @@ Add an Order
 All Orders
 ![Screenshot_20220105_182400](https://user-images.githubusercontent.com/67866166/148221013-a6f6bc9c-bc46-4d9e-9806-f0529581fb9c.png)
 
-View a specifi Order
+View a specific Order
 ![Screenshot_20220105_182417](https://user-images.githubusercontent.com/67866166/148221045-d5fda692-0831-4325-8111-411db0c3aa22.png)
 
 Delete an Order
