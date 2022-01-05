@@ -1,5 +1,16 @@
 # Python-CRUD-Operations
-Simple CRUD Operations using Python3, Flask, MySQL (old repository)->(new = Flask-CRUD-Operations)
+## CRUD Operations using Python3, Flask, MySQL
+
+Things used :
+- IDE (for python3)
+- Mysql Database
+- JavaScript/jQuery
+- HTML5/CSS (Bootstrap 4)
+- CRUD Functionality (Create, Read(view/display), Update, Delete)
+
+Project Dependencies
+- MySQL Driver
+- Python modules (Flask, sql_connection)
 
 ## Screenshots of demo
 Add Product
