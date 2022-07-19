@@ -6,7 +6,7 @@ Things used :
 - Mysql Database
 - JavaScript/jQuery
 - HTML5/CSS (Bootstrap 4)
-- CRUD Functionality (Create, Read(view/display), Update, Delete)
+- CRUD Functionality (Create, Read, Update, Delete)
 
 Project Dependencies
 - MySQL Driver
