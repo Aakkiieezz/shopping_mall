@@ -1,5 +1,24 @@
-# Shopping Mall
-## CRUD Operations using Python3, Flask, MySQL
+# CRUD Operations using Python3, Flask, MySQL
+
+About :
+Its a small simple project of CRUD operations using flask framework of python
+First we had created a virtual environment using python package 'virtualenv'
+to avoid installing packages globally which can break system tools or cause problem for other projects due to version difference.
+We have mysql workbench to see the database and mysql-connector-python package for connection of python code with database, so to be able to execute sql query from python.
+The database contains 3 tables
+
+For frontend/UI we use HTML,CSS,JavaScript,BootStrap
+For backend we use Python,Flask
+For database we use MySQL
+server - Flask server
+
+In the project we have 2 modules Products & Orders
+
+The project features :
+inserting,deleting,modifying,viewing of products
+placing an order, deleting an order
+view all orders
+view details of a specific order
 
 Things used :
 - IDE (for python3)
