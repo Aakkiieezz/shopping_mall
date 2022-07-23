@@ -1,0 +1,28 @@
+CREATE DATABASE ShoppingMall;
+
+CREATE TABLE ShoppingMall.Products (
+  `prod_ID` int NOT NULL AUTO_INCREMENT,
+  `prod_Name` varchar(10) NOT NULL,
+  `prod_Unit` varchar(10) NOT NULL,
+  `prod_PricePerUnit` double NOT NULL,
+  PRIMARY KEY (`prod_ID`)
+);
+
+CREATE TABLE ShoppingMall.Orders (
+  `order_ID` int NOT NULL AUTO_INCREMENT,
+  `order_CustomerName` varchar(10) NOT NULL,
+  `order_TotalPrice` double NOT NULL,
+  `order_DateTime` date NOT NULL,
+  PRIMARY KEY (`order_ID`)
+);
+
+CREATE TABLE ShoppingMall.OrderDetails (
+  `OrderID` int NOT NULL,
+  `ProductID` int NOT NULL,
+  `Quantity` int NOT NULL,
+  `TotalPrice` double NOT NULL,
+  PRIMARY KEY (`OrderID`,`ProductID`),
+  KEY `fk_OrderDetails_ProductID_idx` (`ProductID`),
+  CONSTRAINT `fk_OrderDetails_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`order_ID`) ON DELETE CASCADE ON UPDATE RESTRICT,
+  CONSTRAINT `fk_OrderDetails_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `Products` (`prod_ID`) ON DELETE CASCADE
+);
