@@ -1,9 +1,0 @@
-While making an order, user has option to buy the same product again.
-Therefore the order is getting placed as it has unique order id, but the order details for that order is not saved as there is duplicate product id.
--> User should not have the option to select the same product again from the dropdown menu while making an order.
-
-When product is edited, the orderDetails regarding that product is not changing
--> foreign key on update value has to be changed, but unable to
-
-When product is deleted, the orderDetails regarding that product is getting deleted
--> foreign key on delete value has to be changed, but unable to
