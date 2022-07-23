@@ -1,4 +1,4 @@
-# Python-CRUD-Operations
+# Shopping Mall
 ## CRUD Operations using Python3, Flask, MySQL
 
 Things used :
