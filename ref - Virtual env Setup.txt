@@ -1,0 +1,28 @@
+- Create a virtual environment using 'virtualenv' package
+  virtualenv shopping_mall_env
+
+- Activate the environment (to get inside the environment)
+  source shopping_mall_env/bin/activate
+
+- Install 2 packages inside the environment (i.e. after activating it)
+  pip3 install flask
+  pip3 install mysql-connector
+
+- For extra info of packages available inside the environment
+  pip3 list
+
+Package      Version
+------------ -------
+click        8.1.3
+Flask        2.1.2
+itsdangerous 2.1.2
+Jinja2       3.1.2
+MarkupSafe   2.1.1
+mysql-connector 2.2.9
+pip          22.0.4
+setuptools   62.1.0
+Werkzeug     2.1.2
+wheel        0.37.1
+
+- Deactivate the environment (to get outside the environment)
+  deactivate
