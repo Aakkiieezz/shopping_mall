@@ -1,6 +1,6 @@
 # CRUD Operations using Python3, Flask, MySQL
 
-About :
+## About :
 Its a small simple project of CRUD operations using flask framework of python
 First we had created a virtual environment using python package 'virtualenv'
 to avoid installing packages globally which can break system tools or cause problem for other projects due to version difference.
@@ -20,7 +20,7 @@ placing an order, deleting an order
 view all orders
 view details of a specific order
 
-Things used :
+## Things used :
 - IDE (for python3)
 - Mysql Database
 - JavaScript/jQuery
