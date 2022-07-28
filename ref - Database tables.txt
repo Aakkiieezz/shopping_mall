@@ -26,6 +26,3 @@ CREATE TABLE ShoppingMall.OrderDetails (
   CONSTRAINT `fk_OrderDetails_OrderID` FOREIGN KEY (`OrderID`) REFERENCES `Orders` (`order_ID`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `fk_OrderDetails_ProductID` FOREIGN KEY (`ProductID`) REFERENCES `Products` (`prod_ID`) ON DELETE CASCADE
 );
-
-divya
-
