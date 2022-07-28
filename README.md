@@ -1,4 +1,4 @@
-# CRUD Operations using Python3, Flask, MySQL
+# CRUD Operations using Python3 + Flask + MySQL
 
 ## About :
 Its a small simple project of CRUD operations using flask framework of python
