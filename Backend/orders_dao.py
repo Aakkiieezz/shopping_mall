@@ -1,8 +1,7 @@
 from datetime import datetime
 from sql_connection import get_sql_connection
 
-def insert_order(connection, order):
-    # print("****************************************orders_dao -> insert_order()")
+def createOrder(connection, order):
     cursor = connection.cursor()
     order_query = "INSERT INTO Orders (order_CustomerName, order_TotalPrice, order_DateTime) VALUES (%s,%s,%s)"
     order_data = (order['order_CustomerName'], order['total'], datetime.now())
@@ -16,8 +15,7 @@ def insert_order(connection, order):
     # connection.close()
     return cursor.lastrowid
 
-def get_order_details(connection, order_id):
-    # print("****************************************orders_dao -> order_details()")
+def getOrder(connection, order_id):
     cursor = connection.cursor()
     query = "SELECT * FROM OrderDetails WHERE OrderID = "+str(order_id)
     cursor.execute(query)
@@ -26,20 +24,18 @@ def get_order_details(connection, order_id):
     # connection.close()
     return response
 
-def get_all_orders(connection):
-    # print("****************************************orders_dao -> get_all_orders()")
+def getOrders(connection):
     cursor = connection.cursor()
     query = "SELECT * FROM Orders"
     cursor.execute(query)
     response = [{'order_ID': a, 'order_CustomerName': b,'order_TotalPrice': c, 'order_DateTime': d} for (a,b,c,d) in cursor]
     cursor.close()
     for record in response:
-        record['OrderDetails'] = get_order_details(connection, record['order_ID'])
+        record['OrderDetails'] = getOrder(connection, record['order_ID'])
     # connection.close()
     return response
 
-def delete_order(connection, order_id):
-    # print("****************************************orders_dao -> delete_order()")
+def deleteOrder(connection, order_id):
     cursor = connection.cursor()
     query = "DELETE FROM Orders WHERE order_ID = "+str(order_id)
     cursor.execute(query)

@@ -1,6 +1,7 @@
-CREATE DATABASE ShoppingMall;
+CREATE DATABASE shopping_mall;
 
-CREATE TABLE ShoppingMall.Products (
+CREATE TABLE shopping_mall.Products
+(
   `prod_ID` int NOT NULL AUTO_INCREMENT,
   `prod_Name` varchar(10) NOT NULL,
   `prod_Unit` varchar(10) NOT NULL,
@@ -8,7 +9,8 @@ CREATE TABLE ShoppingMall.Products (
   PRIMARY KEY (`prod_ID`)
 );
 
-CREATE TABLE ShoppingMall.Orders (
+CREATE TABLE shopping_mall.Orders
+(
   `order_ID` int NOT NULL AUTO_INCREMENT,
   `order_CustomerName` varchar(10) NOT NULL,
   `order_TotalPrice` double NOT NULL,
@@ -16,7 +18,8 @@ CREATE TABLE ShoppingMall.Orders (
   PRIMARY KEY (`order_ID`)
 );
 
-CREATE TABLE ShoppingMall.OrderDetails (
+CREATE TABLE shopping_mall.OrderDetails
+(
   `OrderID` int NOT NULL,
   `ProductID` int NOT NULL,
   `Quantity` int NOT NULL,

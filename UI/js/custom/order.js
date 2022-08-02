@@ -1,12 +1,11 @@
 var productPrices = {};
 
-$(function() {
-    $.get(productListApiUrl, function(response) {
-        // console.log('****************************************order.js -> click productListApiUrl');
+$(function () {
+    $.get(productListApiUrl, function (response) {
         productPrices = {}
         if (response) {
             var options = '<option value="">--Select--</option>';
-            $.each(response, function(index, product) {
+            $.each(response, function (index, product) {
                 options += '<option value="' + product.prod_ID + '">' + product.prod_Name + '</option>';
                 productPrices[product.prod_ID] = product.prod_PricePerUnit;
             });
@@ -15,8 +14,7 @@ $(function() {
     });
 });
 
-$("#addMoreButton").click(function() {
-    // console.log('****************************************dashboard.js -> click addMore');
+$("#addMoreButton").click(function () {
     var row = $(".product-box").html();
     $(".product-box-extra").append(row);
     $(".product-box-extra .remove-row").last().removeClass('hideit');
@@ -25,27 +23,23 @@ $("#addMoreButton").click(function() {
     $(".product-box-extra .product-total").last().text('0.0');
 });
 
-$(document).on("click", ".remove-row", function() {
-    // console.log('****************************************dashboard.js -> click remove-row');
+$(document).on("click", ".remove-row", function () {
     $(this).closest('.row').remove();
     calculateValue();
 });
 
-$(document).on("change", ".cart-product", function() {
-    // console.log('****************************************dashboard.js -> change cart-product');
+$(document).on("change", ".cart-product", function () {
     var product_id = $(this).val();
     var price = productPrices[product_id];
     $(this).closest('.row').find('#product_price').val(price);
     calculateValue();
 });
 
-$(document).on("change", ".product-qty", function(e) {
-    // console.log('****************************************dashboard.js -> change product-qty');
+$(document).on("change", ".product-qty", function (e) {
     calculateValue();
 });
 
-$("#saveOrder").on("click", function() {
-    // console.log('****************************************dashboard.js -> click saveOrder');
+$("#saveOrder").on("click", function () {
     var formData = $("form").serializeArray();
     var requestPayload = {
         order_CustomerName: null,
@@ -82,5 +76,5 @@ $("#saveOrder").on("click", function() {
         }
     }
     console.log(requestPayload)
-    callApi("POST", orderSaveApiUrl, {'data': JSON.stringify(requestPayload)});
+    callApi("POST", orderSaveApiUrl, { 'data': JSON.stringify(requestPayload) });
 });

@@ -1,2 +1,5 @@
-# No need of Virtual environment folder, refer to file "ref - Virtual env Setup.txt"
+### Virtual environment ###
 shopping_mall_env/
+
+### Database cache ###
+Backend/__pycache__/

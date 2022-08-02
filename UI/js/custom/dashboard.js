@@ -1,11 +1,10 @@
-$(function() {
+$(function () {
     //Json data by api call for order table
-    $.get(orderListApiUrl, function(response) {
-        // console.log('****************************************dashboard.js -> orderListApiUrl');
+    $.get(orderListApiUrl, function (response) {
         if (response) {
             var table = '';
             var totalCost = 0;
-            $.each(response, function(index, order) {
+            $.each(response, function (index, order) {
                 totalCost += parseFloat(order.order_TotalPrice);
                 table += '<tr data-id="' + order.order_ID + '">' +
                     '<td>' + order.order_DateTime + '</td>' +
@@ -21,13 +20,12 @@ $(function() {
     });
 });
 
-$(document).on("click", ".show-order-details", function() {
-    // console.log('****************************************dashboard.js -> click show-order-details');
+$(document).on("click", ".show-order-details", function () {
     var tr = $(this).closest('tr');
-    $.get(orderDetailsApiUrl + '/' + tr.data('id'), function(response) {
+    $.get(orderDetailsApiUrl + '/' + tr.data('id'), function (response) {
         if (response) {
             var table = '';
-            $.each(response, function(index, order) {
+            $.each(response, function (index, order) {
                 table += '<tr>' +
                     '<td>' + order.ProductID + '</td>' +
                     '<td>' + order.Quantity + '</td>' +
@@ -38,13 +36,12 @@ $(document).on("click", ".show-order-details", function() {
     });
 });
 
-$(document).on("click", ".delete-order", function() {
-    // console.log('****************************************dashboard.js -> click delete-order');
+$(document).on("click", ".delete-order", function () {
     var tr = $(this).closest('tr');
     var data = {
         orderID: tr.data('id')
     };
     var isDelete = confirm("Are you sure to delete " + tr.data('id') + " order?");
     if (isDelete)
-        callApi("POST", orderDeleteApiUrl, data);
+        callApi('POST', orderDeleteApiUrl, data);
 });

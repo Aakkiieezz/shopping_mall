@@ -1,10 +1,9 @@
-$(function() {
+$(function () {
     //JSON data by API call
-    $.get(productListApiUrl, function(response) {
-        // console.log('****************************************manage-product.js -> 1st function()');
+    $.get(productListApiUrl, function (response) {
         if (response) {
             var table = '';
-            $.each(response, function(index, product) {
+            $.each(response, function (index, product) {
                 table += '<tr data-id="' + product.prod_ID + '" data-name="' + product.prod_Name + '" data-unit="' + product.prod_Unit + '" data-price="' + product.prod_PricePerUnit + '">' +
                     '<td>' + product.prod_Name + '</td>' +
                     '<td>' + product.prod_Unit + '</td>' +
@@ -18,8 +17,7 @@ $(function() {
 });
 
 
-$("#saveProduct").on("click", function() {
-    // console.log('****************************************manage-product.js -> click #saveProduct');
+$("#saveProduct").on("click", function () {
     var data = $("#productForm").serializeArray();
     var requestPayload = {
         prod_Name: null,
@@ -43,8 +41,7 @@ $("#saveProduct").on("click", function() {
     callApi("POST", productSaveApiUrl, { 'data': JSON.stringify(requestPayload) });
 });
 
-$(document).on("click", ".show-product-details", function() {
-    // console.log('****************************************manage-product.js -> click show-product-details');
+$(document).on("click", ".show-product-details", function () {
     var tr = $(this).closest('tr');
     $("#editProductForm #id").val(tr.data('id'));
     $("#editProductForm #name").val(tr.data('name'));
@@ -52,8 +49,7 @@ $(document).on("click", ".show-product-details", function() {
     $("#editProductForm #price").val(tr.data('price'));
 });
 
-$("#editProduct").on("click", function() {
-    // console.log('****************************************manage-product.js -> click editProduct');
+$("#editProduct").on("click", function () {
     var data = $("#editProductForm").serializeArray();
     var requestPayload = {
         prod_ID: null,
@@ -81,18 +77,18 @@ $("#editProduct").on("click", function() {
     callApi("POST", productEditApiUrl, { 'data': JSON.stringify(requestPayload) });
 });
 
-$(document).on("click", ".delete-product", function() {
-    // console.log('****************************************manage-product.js -> click delete-Product');
+$(document).on("click", ".delete-product", function () {
     var tr = $(this).closest('tr');
     var data = {
         prod_ID: tr.data('id')
     };
+    console.log(data)
     var isDelete = confirm("Are you sure to delete " + tr.data('name') + " item?");
     if (isDelete)
         callApi("POST", productDeleteApiUrl, data);
 });
 
-$("#addProductModal").on('hide.bs.modal', function() {
+$("#addProductModal").on('hide.bs.modal', function () {
     $("#id").val('0');
     $("#name, #unit, #price").val('');
 });

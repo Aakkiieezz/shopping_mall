@@ -8,78 +8,69 @@ import orders_dao
 app = Flask(__name__)
 connection = get_sql_connection()
 
-@app.route('/getProducts', methods=['GET']) 
-def get_products():
-    # print("****************************************server -> get_products()")
-    response = products_dao.get_all_products(connection)
+@app.route('/products', methods=['GET']) 
+def getProducts():
+    response = products_dao.getProducts(connection)
     response = jsonify(response)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/insertProduct', methods=['POST'])
-def insert_product():
-    # print("****************************************server -> insert_product()")
+@app.route('/products', methods=['POST'])
+def createProduct():
     request_payload = json.loads(request.form['data'])
-    product_id = products_dao.insert_new_product(connection, request_payload)
+    product_id = products_dao.createProduct(connection, request_payload)
     response = jsonify({'product_id': product_id})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/editProduct', methods=['POST'])
-def edit_product():
-    # print("****************************************server -> edit_product()")
+# PUT method not used because AJAX jQuery has some issues with PUT/DELETE methods 
+@app.route('/products/update', methods=['POST'])
+def updateProduct():
     request_payload = json.loads(request.form['data'])
-    product_id = products_dao.edit_product(connection, request_payload)
-    response = jsonify({'product_id': product_id})
+    products_dao.updateProduct(connection, request_payload)
+    response = jsonify(request_payload)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/deleteProduct', methods=['POST'])
-def delete_product():
-    # print("****************************************server -> delete_product()")
-    return_id = products_dao.delete_product(connection, request.form['prod_ID'])
+@app.route('/products/delete', methods=['POST'])
+def deleteProduct():
+    return_id = products_dao.deleteProduct(connection, request.form['prod_ID'])
     response = jsonify({'prod_ID': return_id})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/getAllOrders', methods=['GET'])
-def get_all_orders():
-    # print("****************************************server -> get_all_orders()")
-    response = orders_dao.get_all_orders(connection)
+@app.route('/orders', methods=['GET'])
+def getOrders():
+    response = orders_dao.getOrders(connection)
     response = jsonify(response)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/getOrderDetails/<int:id>', methods=['GET'])
-def get_OrderDetails(id):
-    # print("****************************************server -> get_OrderDetails()")
-    response = orders_dao.get_order_details(connection, id)
+@app.route('/orders/<int:id>', methods=['GET'])
+def getOrder(id):
+    response = orders_dao.getOrder(connection, id)
     response = jsonify(response)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/insertOrder', methods=['POST'])
-def insert_order():
-    # print("****************************************server -> insert_order()")
+@app.route('/orders', methods=['POST'])
+def createOrder():
     request_payload = json.loads(request.form['data'])
-    order_id = orders_dao.insert_order(connection, request_payload)
+    print(request.form['data'])
+    print(request_payload)
+    order_id = orders_dao.createOrder(connection, request_payload)
     response = jsonify({'order_id': order_id})
+    print(response)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/deleteOrder', methods=['POST'])
+# DELETE method not used because AJAX jQuery has some issues with PUT/DELETE methods
+@app.route('/orders/delete', methods=['POST'])
 def delete_order():
-    # print("****************************************server -> delete_order()")
-    return_id = orders_dao.delete_order(connection, request.form['orderID'])
+    return_id = orders_dao.deleteOrder(connection, request.form['orderID'])
     response = jsonify({'orderID': return_id})
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/example') # endpoint
-def example_function():
-    # print("****************************************server -> example_function()")
-    return "Hello, this is just to show how flask server works..."
-
 if __name__ == "__main__":
-    print("Starting Python Flask Server")
     app.run(port=5000)
